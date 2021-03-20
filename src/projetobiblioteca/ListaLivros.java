@@ -2,7 +2,8 @@ package projetobiblioteca;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ListaLivros {
+public class ListaLivros 
+{
     private static ArrayList<Livro> listaLivros = new ArrayList<>();    
 
     // inclui um Livro no início da lista 
@@ -55,12 +56,3 @@ public class ListaLivros {
     }
 
 }
-
-/*
-public class NameSorter implements Comparator<Employee> 
-{
-    @Override
-    public int compare(Employee o1, Employee o2) {
-        return o2.getName().compareToIgnoreCase(o1.getName());
-    }
-}*/
