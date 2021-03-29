@@ -1,7 +1,5 @@
 package projetobiblioteca;
 
-import java.util.Comparator;
-
 public class Livro {
     private String titulo;
     private String editora;
@@ -56,18 +54,6 @@ public class Livro {
     public void setId(int id) {
         this.id = id;
     }
-    
-    //usado para ordenar alfabeticamente por titulo no ListaLivros
-    public static Comparator<Livro> LivroTituloComparator = new Comparator<Livro>()
-    {
-        public int compare(Livro l1, Livro l2)
-        {
-            String LivroTitulo1 = l1.getTitulo().toUpperCase();
-            String LivroTitulo2 = l2.getTitulo().toUpperCase();
-
-            return LivroTitulo1.compareTo(LivroTitulo2);
-        }
-    };
 
     public String imprimir(){
         return "Título: " + titulo + "\nEditora: " + editora +
