@@ -68,7 +68,7 @@ public class ListaLivros
     {
         for(int i = 0; i < num; i++) 
         {   
-            System.out.print(i + " " + listaLivros[i].getTitulo().toString()+" ");
+            System.out.print(i + ". " + listaLivros[i].getTitulo().toString()+", ");
         }  
     }
 
