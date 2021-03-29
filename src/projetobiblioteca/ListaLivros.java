@@ -40,7 +40,27 @@ public class ListaLivros
     // ordena os objetos Livro presentes na lista em ordem alfabética de título
     public void ordenar()
     {
-        System.out.print(" em produção ");
+        
+        for(int i=0;i<num;i++)
+        {
+            for(int j=0;j<num;j++)
+            {
+                int contador = listaLivros[j].getTitulo().toString().compareToIgnoreCase(listaLivros[i].getTitulo().toString());
+                
+
+                if (contador > 0)
+                {
+                    Livro armazena = new Livro(listaLivros[j].getTitulo().toString(),
+                                            listaLivros[j].getEditora().toString(),
+                                            listaLivros[j].getIsbn(),
+                                            listaLivros[j].getAno_publicacao(),
+                                            listaLivros[j].getId());
+                    contador = 0;
+                    listaLivros[j] = listaLivros[i];
+                    listaLivros[i] = armazena;
+                }
+            }
+        }
     }
 
     //imprime a lista de livros por titulo
