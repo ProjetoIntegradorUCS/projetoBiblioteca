@@ -108,7 +108,8 @@ public class Livro {
 
         return _titulo && _editora && _isbn && _anoPublicacao && autores;
     }
-
+    
+    //commentario teste
     @Override
     public int hashCode() {
         int hash = 7;

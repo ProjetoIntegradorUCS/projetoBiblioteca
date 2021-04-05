@@ -5,13 +5,14 @@ import java.util.List;
 
 public class ListaLivros {
 
-    private static final int DEFAULT_CAPACITY = 100;
+    private static final int DEFAULT_CAPACITY = 100; //capacidade default da lista
     private static Livro[] listaLivros = new Livro[DEFAULT_CAPACITY]; // lista, posições vazias tem valor null
     private static int capacidade = DEFAULT_CAPACITY; // capacidade da lista
     private static int num = 0; // tamanho atual da lista
 
     // inclui um Livro no início da lista 
     public static void incluirNoInicio(Livro livro) {
+        
         if (num == capacidade) {
             aumentarCapacidade();
         }
@@ -91,6 +92,7 @@ public class ListaLivros {
                 "livro " + listaLivros[posicao].getTitulo() + " na posição " + posicao);
     }
 
+    //aumenta capacidade da lista
     private static void aumentarCapacidade() {
         Livro[] temp = listaLivros.clone();
         capacidade += 50;
