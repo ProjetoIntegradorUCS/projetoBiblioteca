@@ -31,7 +31,7 @@ public class MenuCadastrarLivro extends Menu {
         String nome = s.nextLine();
 
         System.out.print("Digite o ISBN do Livro: ");
-        String isbn = s.next();
+        String isbn = s.nextLine();
 
         List<Autor> autores = LerAutor();
 
@@ -64,7 +64,7 @@ public class MenuCadastrarLivro extends Menu {
             ListaAutores.adicionar(a);
 
             System.out.print("Adicionar outro Autor(S/N)? ");
-            String outroAutor = s.next();
+            String outroAutor = s.nextLine();
             if (!outroAutor.toLowerCase().
                     equals("s")) {
                 addAnotherAutor = false;

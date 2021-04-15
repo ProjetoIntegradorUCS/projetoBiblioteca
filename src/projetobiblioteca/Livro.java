@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class Livro {
-
+    //cadastro de livro
     private String titulo;
     private String editora;
     private String isbn;
     private int anoPublicacao;
     private List<Autor> listaAutores;
-
+    
+    //construtor
     public Livro(String titulo,
                  String editora,
                  String isbn,
@@ -22,7 +23,8 @@ public class Livro {
         this.anoPublicacao = ano_publicacao;
         this.listaAutores = autores;
     }
-
+    
+    //getters e setters
     public String getIsbn() {
         return isbn;
     }
@@ -64,7 +66,7 @@ public class Livro {
     }
 
     public String listarAutores() {
-        StringBuilder autores = new StringBuilder();
+        StringBuilder autores = new StringBuilder(); //permite a concatenação de autores
         for (int i = 0; i < listaAutores.size(); i++) {
             autores.append(listaAutores.get(i).
                     getNome());
@@ -82,12 +84,12 @@ public class Livro {
     }
 
     @Override
-    public String toString() {
-        return imprimir();
+    public String toString() {// "representa" um objeto na forma de string
+        return "Título: " + titulo + "\nEditora: " + editora; 
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) {//compara objetos
 
         if (obj == null || !(obj instanceof Livro)) {
             return false;
@@ -108,10 +110,9 @@ public class Livro {
 
         return _titulo && _editora && _isbn && _anoPublicacao && autores;
     }
-    
-    //commentario teste
+
     @Override
-    public int hashCode() {
+    public int hashCode() {//retorna codigo hash
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.titulo);
         hash = 89 * hash + Objects.hashCode(this.editora);

@@ -2,17 +2,20 @@ package projetobiblioteca;
 
 import java.util.Objects;
 
-public class Autor {
 
+public class Autor {
+    //cadastro do autor 
     private String nome;
     private String pais;
-
+    
+    //construtor
     public Autor(String nome,
                  String pais) {
         this.nome = nome;
         this.pais = pais;
     }
-
+    
+    //getters e setters
     public String getPais() {
         return pais;
     }
@@ -30,16 +33,18 @@ public class Autor {
     }
 
     public String imprimir() {
-        return "Nome " + nome + "\nPaís: " + pais;
+        return "Nome: " + nome + "\nPaís: " + pais;
+    }
+    
+    // annotation @override sobrescreve métodos herdados de java.lang.Objects
+    
+    @Override 
+    public String toString() { // "representa" um objeto na forma de string
+        return "Nome: " + nome;
     }
 
     @Override
-    public String toString() {
-        return imprimir();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) { //compara objetos
         if (obj == null || !(obj instanceof Autor)) {
             return false;
         }
@@ -56,7 +61,7 @@ public class Autor {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode() {//retorna código hash
         int hash = 3;
         hash = 71 * hash + Objects.hashCode(this.nome);
         hash = 71 * hash + Objects.hashCode(this.pais);
