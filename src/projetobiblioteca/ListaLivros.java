@@ -11,27 +11,61 @@ public class ListaLivros {
     private static int num = 0; // tamanho atual da lista
 
     // inclui um Livro no início da lista 
-    public static void incluirNoInicio(Livro livro) {
+    public void incluirNoInicio(Livro livro) throws ExcecaoDeLivroJaExistente
+    {
+        try
+        {
+            for (int i = 0; i < num; i++) 
+            {
+                if(listaLivros[i].equals(livro))
+                {
+                    throw new ExcecaoDeLivroJaExistente(" ");
+                }
+            }
+            if (num == capacidade) 
+            {
+                aumentarCapacidade();
+            }
+    
+            num++;
+            for (int i = num; i > 0; i--) 
+            {
+                listaLivros[i] = listaLivros[i - 1];
+            }
+            listaLivros[0] = livro;
+        }
+        catch(ExcecaoDeLivroJaExistente e)
+        {
+            System.out.println((e + "Lista ja possui livro "+ livro.getTitulo()));
+        } 
         
-        if (num == capacidade) {
-            aumentarCapacidade();
-        }
-
-        num++;
-        for (int i = num; i > 0; i--) {
-            listaLivros[i] = listaLivros[i - 1];
-        }
-        listaLivros[0] = livro;
     }
 
     // incluir um Livro no final da lista
-    public static void incluirNoFim(Livro livro) {
-        if (num == capacidade) {
-            aumentarCapacidade();
-        }
+    public void incluirNoFim(Livro livro) throws ExcecaoDeLivroJaExistente 
+    {
+        try
+        {
+            for (int i = 0; i < num; i++) 
+            {
+                if(listaLivros[i].equals(livro))
+                {
+                    throw new ExcecaoDeLivroJaExistente(" ");
+                }
+            }
 
-        listaLivros[num] = livro;
-        num++;
+            if (num == capacidade) {
+                aumentarCapacidade();
+            }
+    
+            listaLivros[num] = livro;
+            num++;
+        }
+        catch(ExcecaoDeLivroJaExistente e)
+        {
+            System.out.println((e + "Lista ja possui livro "+ livro.getTitulo()));
+        }    
+        
     }
 
     // ordena os objetos Livro presentes na lista em ordem alfabética de título
@@ -65,15 +99,25 @@ public class ListaLivros {
     }
 
     // remove um Livro do final da lista e o retorna
-    public static void removerDoFim() {
-        if (num == 0) {
-            System.out.print("lista esta vazia");
-            return;
+    public static void removerDoFim() throws ExcecaoDeLivroNaoEncontrado
+    {
+        try
+        {
+            if(num == 0)
+            {
+                throw new ExcecaoDeLivroNaoEncontrado(" ");
+            }
+
+            System.out.print(
+                    "livro " + listaLivros[num - 1].getTitulo() + " removido.");
+            num--;
+            listaLivros[num] = null;
         }
-        System.out.print(
-                "livro " + listaLivros[num - 1].getTitulo() + " removido.");
-        num--;
-        listaLivros[num] = null;
+        catch(ExcecaoDeLivroNaoEncontrado e)
+        {
+            System.out.println((e + "Livro não encontrado na lista "));
+        }
+        
     }
 
     // retorna a quantidade de livros na lista
@@ -103,7 +147,7 @@ public class ListaLivros {
                          0,
                          temp.length);
     }
-
+    
     public static List<Livro> pesquisarAutor(String autor) {
         List<Livro> li = new ArrayList<>();
 
@@ -147,5 +191,21 @@ public class ListaLivros {
         }
 
         return li;
+    }
+
+    public class ExcecaoDeLivroJaExistente extends Exception
+    {
+        public ExcecaoDeLivroJaExistente(String mensagem)
+        {
+            System.out.println(mensagem);
+        }
+    }
+
+    static class  ExcecaoDeLivroNaoEncontrado extends Exception
+    {
+        public ExcecaoDeLivroNaoEncontrado(String mensagem)
+        {
+            System.out.println(mensagem);
+        }
     }
 }
