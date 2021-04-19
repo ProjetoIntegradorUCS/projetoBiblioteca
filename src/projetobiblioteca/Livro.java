@@ -93,6 +93,9 @@ public class Livro {
 
         if (obj == null || !(obj instanceof Livro)) {
             return false;
+            
+        if (obj == this) return true;
+            
         }
         Livro l = (Livro) obj;
 
