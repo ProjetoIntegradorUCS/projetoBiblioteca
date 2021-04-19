@@ -121,5 +121,4 @@ public class Livro {
         hash = 89 * hash + Objects.hashCode(this.listaAutores);
         return hash;
     }
-
 }
