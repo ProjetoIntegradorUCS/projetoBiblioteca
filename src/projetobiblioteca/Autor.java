@@ -68,4 +68,4 @@ public class Autor {
         return hash;
     }
 
-}
+}}
