@@ -47,6 +47,9 @@ public class Autor {
     public boolean equals(Object obj) { //compara objetos
         if (obj == null || !(obj instanceof Autor)) {
             return false;
+        
+        if (obj == this) return true;    
+            
         }
         Autor a = (Autor) obj;
 
