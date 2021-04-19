@@ -67,5 +67,4 @@ public class Autor {
         hash = 71 * hash + Objects.hashCode(this.pais);
         return hash;
     }
-
-}}
+}
