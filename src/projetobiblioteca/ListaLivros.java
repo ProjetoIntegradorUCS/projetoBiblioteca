@@ -201,7 +201,7 @@ public class ListaLivros {
         }
     }
 
-    static class  ExcecaoDeLivroNaoEncontrado extends Exception
+    static class ExcecaoDeLivroNaoEncontrado extends Exception
     {
         public ExcecaoDeLivroNaoEncontrado(String mensagem)
         {
