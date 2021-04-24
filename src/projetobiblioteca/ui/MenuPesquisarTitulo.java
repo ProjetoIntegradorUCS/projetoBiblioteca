@@ -14,32 +14,45 @@ import projetobiblioteca.Livro;
  *
  * @author JOAO
  */
-public class MenuPesquisarTitulo extends Menu {
+public class MenuPesquisarTitulo
+        extends Menu
+{
 
-    public MenuPesquisarTitulo(Menu parent) {
+    public MenuPesquisarTitulo(Menu parent,
+                               ListaLivros ll)
+    {
         super("Pesquisar Titulo",
-              parent);
+              parent,
+              ll,
+              null);
     }
 
     @Override
-    protected void ShowContent() {
+    protected void ShowContent()
+    {
         Scanner s = new Scanner(System.in);
         System.out.println("Digite o Termo da Pesquisa: ");
         String pesquisa = s.nextLine();
 
         System.out.println();
-        List<Livro> li = ListaLivros.pesquisarTitulo(pesquisa);
+        List<Livro> li = listaLivros.pesquisarTitulo(pesquisa);
 
-        if (li.size() > 0) {
-            li.forEach(l -> {
-                System.out.println(imprimeLivro(l));
+        if (li.size() > 0)
+        {
+            li.forEach(l ->
+            {
+                System.out.println(l);
+                System.out.println();
             });
-        } else {
+        }
+        else
+        {
             System.out.println("Nenhum Livro Encontrado!");
         }
     }
 
-    private String imprimeLivro(Livro l) {
+    private String imprimeLivro(Livro l)
+    {
         return String.format("Título: %s\nAutores: %s\nEditora: %s",
                              l.getTitulo(),
                              l.getListaAutor(),

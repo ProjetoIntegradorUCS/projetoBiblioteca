@@ -5,27 +5,42 @@
  */
 package projetobiblioteca.ui;
 
+import projetobiblioteca.ListaAutores;
+import projetobiblioteca.ListaLivros;
+
 /**
  *
  * @author JOAO
  */
-public class MenuPrincipal extends Menu {
+public class MenuPrincipal
+        extends Menu
+{
 
     private final int MENU_CADASTRAR = 1;
     private final int MENU_PESQUISAR = 2;
 
-    public MenuPrincipal() {
+    public MenuPrincipal(ListaLivros ll,
+                         ListaAutores la)
+    {
         super("Principal",
+              null,
+              null,
               null);
         super.getOpcoes().
-                add(new MenuCadastrar(this));
+                add(new MenuCadastrar(this,
+                                      ll,
+                                      la));
         super.getOpcoes().
-                add(new MenuPesquisar(this));
+                add(new MenuPesquisar(this,
+                                      ll,
+                                      null));
     }
 
     @Override
-    protected Menu NextMenu(int op) {
-        switch (op) {
+    protected Menu NextMenu(int op)
+    {
+        switch (op)
+        {
             case MENU_CADASTRAR:
                 return super.getOpcoes().
                         get(MENU_CADASTRAR - 1);

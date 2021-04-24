@@ -1,90 +1,76 @@
 package projetobiblioteca;
 
+import projetobiblioteca.Excecoes.ExcecaoDeAutorNaoEncontrado;
+import projetobiblioteca.Excecoes.ExcecaoDeAutoresJaExistente;
 import java.util.ArrayList;
 
-public class ListaAutores {
+public class ListaAutores
+{
 
-    private static final ArrayList<Autor> listaAutores = new ArrayList<>();
-    private static int num;
-   
+    private final ArrayList<Autor> listaAutores = new ArrayList<>();
+    private int num;
+
     //método Get
-    public static ArrayList<Autor> getListaAutores() {
+    public ArrayList<Autor> getListaAutores()
+    {
         return listaAutores;
     }
 
     //adiciona um objeto na lista
-    static public void adicionar(Autor a) throws ExcecaoDeAutoresJaExistente
+    public void adicionar(Autor a) throws ExcecaoDeAutoresJaExistente
     {
-        try
+        if (listaAutores.contains(a))
         {
-            for (int i = 0; i < num; i++) 
-            {
-                if(listaAutores.get(i).equals(a))
-                {
-                    throw new ListaAutores.ExcecaoDeAutoresJaExistente(" ");
-                }
-            }
-            
+            throw new ExcecaoDeAutoresJaExistente("Lista ja possui autor "
+                    + a.getNome());
         }
-        catch(ListaAutores.ExcecaoDeAutoresJaExistente e)
+        else
         {
-            System.out.println((e + "Lista ja possui autor "+ a.getNome()));
-        } 
+            listaAutores.add(a);
+        }
     }
-    
 
     //lista todos os autores da lista
-    static public String listar() {
-        String saida = "";
-        int i = 1;
-        for (Autor a : listaAutores) {
-            saida += (i++) + "- ";
-            saida += a.imprimir() + "\n";
+    public String listar()
+    {
+        StringBuilder saida = new StringBuilder();
+
+        for (int i = 0;
+             i < listaAutores.size();
+             i++)
+        {
+            saida.append(String.format("%d - %s\n",
+                                       i + 1,
+                                       listaAutores.get(i)));
         }
-        return saida;
+
+        return saida.toString();
     }
 
     //remove um autor pelo nome
-    static public boolean remover(String nome) throws ExcecaoDeAutorNaoEncontrado
+    public void remover(String nome) throws ExcecaoDeAutorNaoEncontrado
     {
-        try
+        for (Autor a
+             : listaAutores)
         {
-            for (Autor a : listaAutores) {
-                if (a.getNome().equalsIgnoreCase(nome)) {
-                    listaAutores.remove(a);
-                    return true;                  
-                }
-                else{
-                    throw new ListaAutores.ExcecaoDeAutorNaoEncontrado(" ");
-                }
+            if (a.getNome().equalsIgnoreCase(nome))
+            {
+                listaAutores.remove(a);
+                return;
+            }
+            else
+            {
+                throw new ExcecaoDeAutorNaoEncontrado(String.format(
+                        "Autor %s não encontrado na lista.",
+                        nome));
             }
         }
-        catch(ListaAutores.ExcecaoDeAutorNaoEncontrado e)
-        {
-            System.out.println((e + "Autor não encontrado na lista "));
-        }
-        return false;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return listar();
-    }
-
-    private static class ExcecaoDeAutoresJaExistente extends Exception {
-
-        public ExcecaoDeAutoresJaExistente(String mensagem) 
-        {
-            System.out.println(mensagem);       
-        }
-    }
-
-    private static class ExcecaoDeAutorNaoEncontrado extends Exception {
-
-        public ExcecaoDeAutorNaoEncontrado(String mensagem) 
-        {
-            System.out.println(mensagem); 
-        }
     }
 
 }

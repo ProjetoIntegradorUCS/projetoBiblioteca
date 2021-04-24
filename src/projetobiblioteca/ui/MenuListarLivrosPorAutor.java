@@ -14,27 +14,39 @@ import projetobiblioteca.Livro;
  *
  * @author JOAO
  */
-public class MenuListarLivrosPorAutor extends Menu {
+public class MenuListarLivrosPorAutor
+        extends Menu
+{
 
-    public MenuListarLivrosPorAutor(Menu parent) {
+    public MenuListarLivrosPorAutor(Menu parent,
+                                    ListaLivros ll)
+    {
         super("Listar Livros por Autor",
-              parent);
+              parent,
+              ll,
+              null);
     }
 
     @Override
-    protected void ShowContent() {
+    protected void ShowContent()
+    {
         Scanner s = new Scanner(System.in);
         System.out.println("Digite o Nome do Autor: ");
         String nome = s.nextLine();
 
         System.out.println();
-        List<Livro> li = ListaLivros.pesquisarAutor(nome);
+        List<Livro> li = listaLivros.pesquisarAutor(nome);
 
-        if (li.size() > 0) {
-            li.forEach(l -> {
-                System.out.println(l.getTitulo());
+        if (li.size() > 0)
+        {
+            li.forEach(l ->
+            {
+                System.out.println(l);
+                System.out.println();
             });
-        } else {
+        }
+        else
+        {
             System.out.println("Nenhum Livro Encontrado!");
         }
     }

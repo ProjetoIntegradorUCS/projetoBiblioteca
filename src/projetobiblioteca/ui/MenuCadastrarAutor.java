@@ -7,20 +7,28 @@ package projetobiblioteca.ui;
 
 import java.util.Scanner;
 import projetobiblioteca.Autor;
+import projetobiblioteca.Excecoes.ExcecaoDeAutoresJaExistente;
 import projetobiblioteca.ListaAutores;
 
 /**
  *
  * @author JOAO
  */
-public class MenuCadastrarAutor extends Menu {
+public class MenuCadastrarAutor
+        extends Menu
+{
 
-    public MenuCadastrarAutor(Menu parent) {
+    public MenuCadastrarAutor(Menu parent,
+                              ListaAutores la)
+    {
         super("Cadastrar Autor",
-              parent);
+              parent,
+              null,
+              la);
     }
 
-    public void CadastrarAutor() {
+    public void CadastrarAutor()
+    {
         Scanner s = new Scanner(System.in);
         System.out.print("Digite o Nome do Autor: ");
         String nome = s.nextLine();
@@ -28,6 +36,14 @@ public class MenuCadastrarAutor extends Menu {
         String pais = s.nextLine();
         Autor a = new Autor(nome,
                             pais);
-        ListaAutores.adicionar(a);
+
+        try
+        {
+            listaAutores.adicionar(a);
+        }
+        catch (ExcecaoDeAutoresJaExistente ex)
+        {
+            System.out.println(ex);
+        }
     }
 }

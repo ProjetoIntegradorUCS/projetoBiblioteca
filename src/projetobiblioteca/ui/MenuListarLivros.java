@@ -11,19 +11,29 @@ import projetobiblioteca.ListaLivros;
  *
  * @author JOAO
  */
-public class MenuListarLivros extends Menu {
+public class MenuListarLivros
+        extends Menu
+{
 
-    public MenuListarLivros(Menu parent) {
+    public MenuListarLivros(Menu parent,
+                            ListaLivros ll)
+    {
         super("Listar Livros",
-              parent);
+              parent,
+              ll,
+              null);
     }
 
     @Override
-    protected void ShowContent() {
-        if (ListaLivros.tamanho() > 0) {
-            ListaLivros.ordenar();
-            ListaLivros.imprimir();
-        } else {
+    protected void ShowContent()
+    {
+        if (listaLivros.tamanho() > 0)
+        {
+            listaLivros.ordenar();
+            System.out.println(listaLivros);
+        }
+        else
+        {
             System.out.println("Nenhum Livro Cadastrado!");
         }
     }

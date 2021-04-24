@@ -1,20 +1,16 @@
 package projetobiblioteca;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-import projetobiblioteca.ListaLivros.ExcecaoDeLivroJaExistente;
 import projetobiblioteca.ui.UI;
 
-public class ProjetoBiblioteca {
+public class ProjetoBiblioteca
+{
 
-    public static void main(String[] args) throws ExcecaoDeLivroJaExistente
+    public static void main(String[] args)
     {
-        public class ProjetoBiblioteca {
-
-    public static void main(String[] args) {
-        UI ui = new UI();
+        ListaLivros ll = new ListaLivros();
+        ListaAutores la = new ListaAutores();
+        UI ui = new UI(ll,
+                       la);
         ui.DisplayMenu();
     }
 

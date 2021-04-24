@@ -3,99 +3,119 @@ package projetobiblioteca;
 import java.util.List;
 import java.util.Objects;
 
-public class Livro {
+public class Livro
+{
+
     //cadastro de livro
     private String titulo;
     private String editora;
     private String isbn;
     private int anoPublicacao;
     private List<Autor> listaAutores;
-    
+
     //construtor
     public Livro(String titulo,
                  String editora,
                  String isbn,
                  int ano_publicacao,
-                 List<Autor> autores) {
+                 List<Autor> autores)
+    {
         this.titulo = titulo;
         this.editora = editora;
         this.isbn = isbn;
         this.anoPublicacao = ano_publicacao;
         this.listaAutores = autores;
     }
-    
+
     //getters e setters
-    public String getIsbn() {
+    public String getIsbn()
+    {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(String isbn)
+    {
         this.isbn = isbn;
     }
 
-    public List<Autor> getListaAutor() {
+    public List<Autor> getListaAutor()
+    {
         return listaAutores;
     }
 
-    public void setListaAutor(List<Autor> listaAutor) {
+    public void setListaAutor(List<Autor> listaAutor)
+    {
         this.listaAutores = listaAutor;
     }
 
-    public String getTitulo() {
+    public String getTitulo()
+    {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
+    public void setTitulo(String titulo)
+    {
         this.titulo = titulo;
     }
 
-    public String getEditora() {
+    public String getEditora()
+    {
         return editora;
     }
 
-    public void setEditora(String editora) {
+    public void setEditora(String editora)
+    {
         this.editora = editora;
     }
 
-    public int getAnoPublicacao() {
+    public int getAnoPublicacao()
+    {
         return anoPublicacao;
     }
 
-    public void setAnoPublicacao(int anoPublicacao) {
+    public void setAnoPublicacao(int anoPublicacao)
+    {
         this.anoPublicacao = anoPublicacao;
     }
 
-    public String listarAutores() {
+    public String listarAutores()
+    {
         StringBuilder autores = new StringBuilder(); //permite a concatenação de autores
-        for (int i = 0; i < listaAutores.size(); i++) {
+        for (int i = 0;
+             i < listaAutores.size();
+             i++)
+        {
             autores.append(listaAutores.get(i).
                     getNome());
-            if (i + 1 < listaAutores.size()) {
+            if (i + 1 < listaAutores.size())
+            {
                 autores.append(", ");
             }
         }
         return autores.toString();
     }
 
-    public String imprimir() {
+    public String imprimir()
+    {
         return "Título: " + titulo + "\nEditora: " + editora
                 + "\nISBN: " + isbn + "\nAno de publicação: " + anoPublicacao
                 + "\nAutores: " + listarAutores();
     }
 
     @Override
-    public String toString() {// "representa" um objeto na forma de string
-        return "Título: " + titulo + "\nEditora: " + editora; 
+    public String toString()
+    {// "representa" um objeto na forma de string
+        return imprimir();
     }
 
     @Override
-    public boolean equals(Object obj) {//compara objetos
+    public boolean equals(Object obj)
+    {//compara objetos
 
-        if (obj == null || !(obj instanceof Livro)) {
+        if (obj == null || !(obj instanceof Livro))
+        {
             return false;
-            
-        if (obj == this) return true;
-            
+
         }
         Livro l = (Livro) obj;
 
@@ -115,7 +135,8 @@ public class Livro {
     }
 
     @Override
-    public int hashCode() {//retorna codigo hash
+    public int hashCode()
+    {//retorna codigo hash
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.titulo);
         hash = 89 * hash + Objects.hashCode(this.editora);

@@ -5,31 +5,51 @@
  */
 package projetobiblioteca.ui;
 
-/**
- *
- * @author JOAO
- */
-public class UI {
+import projetobiblioteca.ListaAutores;
+import projetobiblioteca.ListaLivros;
+
+
+public class UI
+{
 
     private Menu mainMenu;
+    private ListaLivros listaLivros;
 
-    public void DisplayMenu() {
+    public void DisplayMenu()
+    {
         Menu current = mainMenu;
-        while (current != null) {
+        while (current != null)
+        {
             current = current.Show();
         }
     }
 
-    public UI() {
-        this.mainMenu = new MenuPrincipal();
+    public UI(ListaLivros ll,
+              ListaAutores la)
+    {
+        this.mainMenu = new MenuPrincipal(ll,
+                                          la);
+        this.listaLivros = ll;
     }
 
-    public Menu getMainMenu() {
+    public Menu getMainMenu()
+    {
         return mainMenu;
     }
 
-    public void setMainMenu(Menu mainMenu) {
+    public void setMainMenu(Menu mainMenu)
+    {
         this.mainMenu = mainMenu;
+    }
+
+    public ListaLivros getListaLivros()
+    {
+        return listaLivros;
+    }
+
+    public void setListaLivros(ListaLivros listaLivros)
+    {
+        this.listaLivros = listaLivros;
     }
 
 }

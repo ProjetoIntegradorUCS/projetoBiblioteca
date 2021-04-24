@@ -9,31 +9,39 @@ import java.util.List;
 import projetobiblioteca.ListaLivros;
 import projetobiblioteca.Livro;
 
-/**
- *
- * @author JOAO
- */
-public class MenuListarLivrosPorPeriodo extends Menu {
+public class MenuListarLivrosPorPeriodo
+        extends Menu
+{
 
-    public MenuListarLivrosPorPeriodo(Menu parent) {
+    public MenuListarLivrosPorPeriodo(Menu parent,
+                                      ListaLivros ll)
+    {
         super("Listar Livros por Periodo",
-              parent);
+              parent,
+              ll,
+              null);
     }
 
     @Override
-    protected void ShowContent() {
+    protected void ShowContent()
+    {
         int anoInicio = LerAno("Digite o Ano Inicial do Periodo: ");
         int anoFim = LerAno("Digite o Ano Final do Periodo: ");
 
         System.out.println();
-        List<Livro> li = ListaLivros.pesquisarPeriodo(anoInicio,
+        List<Livro> li = listaLivros.pesquisarPeriodo(anoInicio,
                                                       anoFim);
 
-        if (li.size() > 0) {
-            li.forEach(l -> {
-                System.out.println(l.getTitulo());
+        if (li.size() > 0)
+        {
+            li.forEach(l ->
+            {
+                System.out.println(l);
+                System.out.println();
             });
-        } else {
+        }
+        else
+        {
             System.out.println("Nenhum Livro Encontrado!");
         }
     }
